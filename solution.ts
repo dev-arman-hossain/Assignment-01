@@ -89,3 +89,29 @@ const users = [
 
 console.log(filterActiveUsers(users));
 
+
+
+
+//* create a function printBookDetails that accepts an object of type Book and prints its details to the console in the format: "Title: [title], Author: [author], Published: [publishedYear], Available: [Yes/No]".
+
+interface Book {
+  title: string;
+  author: string;
+  publishedYear: number;
+  isAvailable: boolean;
+}
+
+function printBookDetails(Books: Book) {
+  const availability = Books.isAvailable ? "Yes" : "No"
+  console.log(`Title: ${Books.title}, Author: ${Books.author}, Published: ${Books.publishedYear}, Available: ${availability}`);
+  
+}
+
+const myBook: Book = {
+  title: 'The Great Gatsby',
+  author: 'F. Scott Fitzgerald',
+  publishedYear: 1925,
+  isAvailable: true,
+};
+
+printBookDetails(myBook);

@@ -45,3 +45,24 @@ class Person {
 const person1 = new Person("Arman Hossain", 24);
 
 person1.getDetails();
+
+//* Create a function filterByRating that accepts an array of items, where each item has title & rating:
+
+interface item {
+  title: string;
+  rating: number;
+}
+
+function filterbyrating(itemsArray: item[]): item[] {
+  const filteredItems = itemsArray.filter((item) => item.rating >= 4);
+  return filteredItems;
+}
+
+const items: item[] = [
+  { title: "Book A", rating: 4.5 },
+  { title: "Book B", rating: 3.8 },
+  { title: "Book C", rating: 5 },
+  { title: "Book D", rating: 2.1 },
+];
+
+console.log(filterbyrating(items));

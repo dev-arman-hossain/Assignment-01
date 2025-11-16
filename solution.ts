@@ -25,3 +25,23 @@ const getLength = (value: string | any[]): number => {
 
 getLength("Arman Hossain");
 getLength([1, 2, 9, 7, 6, 3, 8]);
+
+//* Create a Person class with name and age properties. Add a method getDetails that returns a string with the person's name and age.
+
+class Person {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getDetails() {
+    console.log(`Name: ${this.name}, Age: ${this.age};`);
+  }
+}
+
+const person1 = new Person("Arman Hossain", 24);
+
+person1.getDetails();

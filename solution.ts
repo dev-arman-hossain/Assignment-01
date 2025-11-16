@@ -14,4 +14,14 @@ formatValue("hello world");
 formatValue(5);
 formatValue(true);
 
+//* Problem 02: Create a function getLength that accepts a value which may be a string or an array, and returns the length of the value.
 
+const getLength = (value: string | any[]): number => {
+  if (value === "string" || Array.isArray(value)) {
+    return value.length;
+  }
+  return 0;
+};
+
+getLength("Arman Hossain");
+getLength([1, 2, 9, 7, 6, 3, 8]);

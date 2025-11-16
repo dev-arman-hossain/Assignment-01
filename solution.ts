@@ -82,15 +82,12 @@ function filterActiveUsers(usersArray: user[]): user[] {
 }
 
 const users = [
-  { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
-  { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-  { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
+  { id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
+  { id: 2, name: "Asha", email: "asha@example.com", isActive: false },
+  { id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
 ];
 
 console.log(filterActiveUsers(users));
-
-
-
 
 //* create a function printBookDetails that accepts an object of type Book and prints its details to the console in the format: "Title: [title], Author: [author], Published: [publishedYear], Available: [Yes/No]".
 
@@ -102,16 +99,52 @@ interface Book {
 }
 
 function printBookDetails(Books: Book) {
-  const availability = Books.isAvailable ? "Yes" : "No"
-  console.log(`Title: ${Books.title}, Author: ${Books.author}, Published: ${Books.publishedYear}, Available: ${availability}`);
-  
+  const availability = Books.isAvailable ? "Yes" : "No";
+  console.log(
+    `Title: ${Books.title}, Author: ${Books.author}, Published: ${Books.publishedYear}, Available: ${availability}`
+  );
 }
 
 const myBook: Book = {
-  title: 'The Great Gatsby',
-  author: 'F. Scott Fitzgerald',
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
   publishedYear: 1925,
   isAvailable: true,
 };
 
 printBookDetails(myBook);
+
+//* Create a function getUniqueValues that accepts two arrays and returns a new array containing only the unique values from both arrays, without any duplicates.
+
+function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]): (string | number)[] {
+  const result: (string | number)[] = [];
+
+  
+  function exists(value: string | number, array: (string | number)[]): boolean {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  
+  for (let i = 0; i < arr1.length; i++) {
+    if (!exists(arr1[i], result)) {
+      result[result.length] = arr1[i];
+    }
+  }
+
+ 
+  for (let i = 0; i < arr2.length; i++) {
+    if (!exists(arr2[i], result)) {
+      result[result.length] = arr2[i];
+    }
+  }
+
+  return result;
+}
+
+
+console.log(getUniqueValues([1, 2, 3], [3, 4, 5]));

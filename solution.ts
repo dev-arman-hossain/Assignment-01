@@ -1,4 +1,4 @@
-//*  Problem 01: Create a function formatValue that takes a parameter which can be a number, string, or boolean.
+//*  Problem 01
 
 const formatValue = (input: number | string | boolean) => {
   if (typeof input === "number") {
@@ -14,7 +14,7 @@ formatValue("hello world");
 formatValue(5);
 formatValue(true);
 
-//* Problem 02: Create a function getLength that accepts a value which may be a string or an array, and returns the length of the value.
+//* Problem 02
 
 const getLength = (value: string | any[]): number => {
   if (value === "string" || Array.isArray(value)) {
@@ -26,7 +26,7 @@ const getLength = (value: string | any[]): number => {
 getLength("Arman Hossain");
 getLength([1, 2, 9, 7, 6, 3, 8]);
 
-//* Create a Person class with name and age properties. Add a method getDetails that returns a string with the person's name and age.
+//* Problem 03
 
 class Person {
   name: string;
@@ -46,7 +46,7 @@ const person1 = new Person("Arman Hossain", 24);
 
 person1.getDetails();
 
-//* Create a function filterByRating that accepts an array of items, where each item has title & rating:
+//* Problem 04
 
 interface item {
   title: string;
@@ -65,9 +65,9 @@ const items: item[] = [
   { title: "Book D", rating: 2.1 },
 ];
 
-console.log(filterbyrating(items));
+filterbyrating(items);
 
-//* Create a function filterActiveUsers that accepts an array of user objects. Each user object contains id, name, email, and isActive properties. The function should return a new array containing only the users whose isActive property is true.
+//* Problem 05
 
 interface user {
   id: number;
@@ -87,9 +87,9 @@ const users = [
   { id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
 ];
 
-console.log(filterActiveUsers(users));
+filterActiveUsers(users);
 
-//* create a function printBookDetails that accepts an object of type Book and prints its details to the console in the format: "Title: [title], Author: [author], Published: [publishedYear], Available: [Yes/No]".
+//* Problem 06
 
 interface Book {
   title: string;
@@ -114,12 +114,14 @@ const myBook: Book = {
 
 printBookDetails(myBook);
 
-//* Create a function getUniqueValues that accepts two arrays and returns a new array containing only the unique values from both arrays, without any duplicates.
+//* Problem 07
 
-function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]): (string | number)[] {
+function getUniqueValues(
+  arr1: (string | number)[],
+  arr2: (string | number)[]
+): (string | number)[] {
   const result: (string | number)[] = [];
 
-  
   function exists(value: string | number, array: (string | number)[]): boolean {
     for (let i = 0; i < array.length; i++) {
       if (array[i] === value) {
@@ -129,14 +131,12 @@ function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]): 
     return false;
   }
 
-  
   for (let i = 0; i < arr1.length; i++) {
     if (!exists(arr1[i], result)) {
       result[result.length] = arr1[i];
     }
   }
 
- 
   for (let i = 0; i < arr2.length; i++) {
     if (!exists(arr2[i], result)) {
       result[result.length] = arr2[i];
@@ -146,5 +146,36 @@ function getUniqueValues(arr1: (string | number)[], arr2: (string | number)[]): 
   return result;
 }
 
+getUniqueValues([1, 2, 3], [3, 4, 5]);
 
-console.log(getUniqueValues([1, 2, 3], [3, 4, 5]));
+//* Problem 08
+
+interface Product {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+const calculateTotalPrice = (products: Product[]) => {
+  const total = products.reduce((sum, product) => {
+    const productTotal = product.price * product.quantity;
+    const discountAmount = product.discount
+      ? (productTotal * product.discount) / 100
+      : 0;
+    const totalPrice = productTotal - discountAmount;
+
+    console.log(sum);
+    return sum + totalPrice;
+  }, 0);
+
+  return total;
+};
+
+const products = [
+  { name: "Pen", price: 10, quantity: 2 },
+  { name: "Notebook", price: 25, quantity: 3, discount: 10 },
+  { name: "Bag", price: 50, quantity: 1, discount: 20 },
+];
+
+calculateTotalPrice(products);

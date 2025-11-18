@@ -116,10 +116,7 @@ printBookDetails(myBook);
 
 //* Problem 07
 
-function getUniqueValues(
-  arr1: (string | number)[],
-  arr2: (string | number)[]
-): (string | number)[] {
+function getUniqueValues(arr1: (string | number)[],arr2: (string | number)[]): (string | number)[] {
   const result: (string | number)[] = [];
 
   function exists(value: string | number, array: (string | number)[]): boolean {
